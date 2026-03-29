@@ -1,10 +1,10 @@
-# MCP-R
+# Skill-CDPO
 
-Official implementation of the paper: **MCP-R: Multi-Agent MCP Tools for RAG with Reflexion and Self-Correction**
+Official implementation of the paper: **Skill-CDPO: Evolving Agent Tool-Use via Critical Step Preference Optimization**
 
 ## Overview
 
-This repository contains the official implementation of MCP-R, a multi-agent system for deep research with MCP-based tool backend. The system features reflexion and self-correction capabilities.
+This repository contains the official implementation of Skill-CDPO, a method for evolving agent tool-use through critical step preference optimization.
 
 ## Architecture
 
