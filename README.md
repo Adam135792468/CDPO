@@ -1,17 +1,17 @@
-# DR-Agent
+# MCP-R
 
-Official implementation of the paper: **MCP-R: Multi-Agent MCP Tools for RAG**
+Official implementation of the paper: **MCP-R: Multi-Agent MCP Tools for RAG with Reflexion and Self-Correction**
 
 ## Overview
 
-This repository contains the official implementation of DR-Agent, a multi-agent system for deep research with MCP-based tool backend.
+This repository contains the official implementation of MCP-R, a multi-agent system for deep research with MCP-based tool backend. The system features reflexion and self-correction capabilities.
 
-## Features
+## Architecture
 
-- **MCP-Based Tool Backend**: Unified interface for web search and browsing tools
-- **Multi-Agent Architecture**: Sub-agent pool with reflexion and self-correction
-- **High Concurrency**: Global caching and async request management for RL training at scale
-- **Flexible Prompting Interface**: Easy composition of search workflows with fine-grained control
+- **Sub-Agent Pool**: Manages specialized sub-agents for different tasks
+- **Reflexion Manager**: Handles self-reflection and correction
+- **MCP Client**: Connects to MCP servers for tool execution
+- **Tool Dispatcher**: Routes tools to appropriate agents
 
 ## MCP Tools
 
