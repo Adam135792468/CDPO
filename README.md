@@ -79,12 +79,6 @@ Skill-CDPO achieves **competitive or superior performance compared to GPT-5.2** 
 
 3. **CDPO fully unlocks potential**: Critical step preference optimization captures learning signals that other methods miss
 
-## Citation
-
-```bibtex
-Coming soon
-```
-
 ## Repository Structure
 
 ```
