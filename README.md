@@ -28,13 +28,13 @@ Skill-CDPO introduces a progressive framework that first acquires tool-use skill
 
 ## Benchmarks
 
-We contribute the following medical agent benchmarks:
+We contribute the following PubMed-based deep research benchmarks:
 
 ### PubMed Search Lite
-Test set for evaluating agent performance on medical literature retrieval tasks.
+A curated test set for evaluating agent performance on medical literature retrieval tasks.
 
 ### PubMed Search Full
-Training set for medical agent tool-use optimization.
+The complete test set for medical agent evaluation.
 
 ## Citation
 
