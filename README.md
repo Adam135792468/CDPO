@@ -2,7 +2,10 @@
 
 **Skill-CDPO: Evolving Agent Tool-Use via Critical Step Preference Optimization**
 
-This repository contains the official implementation of Skill-CDPO, a progressive framework for evolving agent tool-use capabilities in compact language models.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
+
+A progressive framework for evolving agent tool-use capabilities in compact language models through Critical Step Preference Optimization.
 
 ## Overview
 
@@ -11,6 +14,10 @@ Compact open-source language models lag behind their larger counterparts in agen
 Skill-CDPO addresses this challenge through a two-stage approach:
 1. **Training-Free Skill Acquisition**: Inference-time skill synthesis via static tool analysis and dynamic strategy refinement
 2. **Critical Step DPO (CDPO)**: Distills error-correction signals into parameter updates through fine-grained preference optimization
+
+## Framework
+
+![Skill-CDPO Framework](./figures/framework.png)
 
 ## Architecture
 
@@ -30,6 +37,12 @@ CDPO identifies the specific trajectory steps where model capability is the bott
 - **Variance Reduction**: $nm$-fold reduction in gradient variance (e.g., 16× with $n=m=4$)
 - **Unbiased Estimation**: Criticality scores converge to true advantage gap
 - **Sample Efficiency**: $\frac{nm}{\rho}$-fold reduction in preference pairs needed
+
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
 
 ## MCP Tools
 
@@ -56,6 +69,13 @@ We evaluate on three medical agent benchmarks:
 | **PubMed Search** (contributed) | PubMed-based deep research benchmark for biomedical literature retrieval | Rubric-based scoring |
 | **CureBench** | Multiple-choice medical QA | Accuracy |
 | **MedBrowseComp** | Closed-form medical QA | Accuracy |
+
+### Dataset Statistics
+
+| Dataset | Samples | Topics | Question Types |
+|---------|---------|--------|----------------|
+| PubMed Search Lite | 147 | 111 | 5 |
+| PubMed Search Full | 711 | 416 | 6 |
 
 ## Main Results
 
@@ -86,10 +106,13 @@ mcp_r/
 ├── dr_agent/              # Core agent implementation
 │   ├── mcp_backend/      # MCP tool backend
 │   │   ├── apis/         # API implementations
-│   │   └── main.py        # MCP server
+│   │   └── main.py       # MCP server
 │   └── tool_interface/    # Tool interfaces
-├── evaluation/           # Evaluation scripts
+├── evaluation/            # Evaluation scripts
+├── figures/               # Framework diagrams
 ├── PubMed Search Lite.jsonl    # Test set (147 samples)
 ├── PubMed Search Full.jsonl     # Full test set (711 samples)
-└── benchmark_visualization.html # Data statistics
+├── benchmark_visualization.html # Data statistics
+├── requirements.txt       # Dependencies
+└── LICENSE               # MIT License
 ```
