@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PubMed Search Benchmarks Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 40px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .stat-card h3 {
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .stat-card .value {
+            color: #333;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .stat-card .subtitle {
+            color: #999;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .chart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .chart-card h2 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 16px;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PubMed Search Benchmarks Statistics</h1>
+
+        <div class="stats-row">
+            <div class="stat-card">
+                <h3>PubMed Search Lite</h3>
+                <div class="value">147</div>
+                <div class="subtitle">samples</div>
+            </div>
+            <div class="stat-card">
+                <h3>PubMed Search Full</h3>
+                <div class="value">711</div>
+                <div class="subtitle">samples</div>
+            </div>
+            <div class="stat-card">
+                <h3>Unique Topics</h3>
+                <div class="value">416</div>
+                <div class="subtitle">medical topics</div>
+            </div>
+            <div class="stat-card">
+                <h3>Question Types</h3>
+                <div class="value">6</div>
+                <div class="subtitle">task categories</div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h2>Question Type Distribution (PubMed Search Full)</h2>
+                <div class="chart-container">
+                    <canvas id="qtypeChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h2>Top 10 Topics (PubMed Search Full)</h2>
+                <div class="chart-container">
+                    <canvas id="topicChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h2>Question Type Distribution (PubMed Search Lite)</h2>
+                <div class="chart-container">
+                    <canvas id="qtypeChartLite"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h2>Top 10 Topics (PubMed Search Lite)</h2>
+                <div class="chart-container">
+                    <canvas id="topicChartLite"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Question type data - Full
+        const qtypeDataFull = {
+            labels: ['efficacy_comparison', 'mechanism', 'prognosis', 'epidemiology', 'review', 'drug_interactions'],
+            values: [282, 143, 125, 84, 74, 3]
+        };
+
+        // Question type data - Lite
+        const qtypeDataLite = {
+            labels: ['efficacy_comparison', 'mechanism', 'epidemiology', 'prognosis', 'review'],
+            values: [67, 25, 20, 20, 15]
+        };
+
+        // Topic data - Full (top 10)
+        const topicDataFull = {
+            labels: ['Cystic fibrosis', 'Systemic lupus erythematosus', "Alzheimer's disease", "Parkinson's disease", 'Epilepsy', 'Rheumatoid arthritis', 'Huntington disease', 'Multiple sclerosis', 'ALS', 'Drug Development/Clinical Trials'],
+            values: [29, 26, 26, 25, 21, 20, 20, 19, 18, 18]
+        };
+
+        // Topic data - Lite (top 10)
+        const topicDataLite = {
+            labels: ['Epilepsy', 'Cystic fibrosis', 'ALS', 'Rheumatoid arthritis', "Parkinson's disease", 'Systemic lupus erythematosus', "Alzheimer's disease", 'Huntington disease', 'Multiple sclerosis', 'Atrial fibrillation'],
+            values: [6, 5, 5, 5, 5, 5, 4, 4, 4, 2]
+        };
+
+        // Color palette
+        const colors = [
+            '#4F46E5', '#7C3AED', '#DB2777', '#DC2626', '#EA580C',
+            '#D97706', '#65A30D', '#16A34A', '#0D9488', '#0891B2'
+        ];
+
+        // Question Type Chart - Full
+        new Chart(document.getElementById('qtypeChart'), {
+            type: 'doughnut',
+            data: {
+                labels: qtypeDataFull.labels,
+                datasets: [{
+                    data: qtypeDataFull.values,
+                    backgroundColor: colors,
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            padding: 12,
+                            usePointStyle: true,
+                            font: { size: 11 }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Question Type Chart - Lite
+        new Chart(document.getElementById('qtypeChartLite'), {
+            type: 'doughnut',
+            data: {
+                labels: qtypeDataLite.labels,
+                datasets: [{
+                    data: qtypeDataLite.values,
+                    backgroundColor: colors.slice(0, 5),
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            padding: 12,
+                            usePointStyle: true,
+                            font: { size: 11 }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Topic Chart - Full
+        new Chart(document.getElementById('topicChart'), {
+            type: 'bar',
+            data: {
+                labels: topicDataFull.labels,
+                datasets: [{
+                    data: topicDataFull.values,
+                    backgroundColor: '#4F46E5',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { size: 11 } }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { font: { size: 11 } }
+                    }
+                }
+            }
+        });
+
+        // Topic Chart - Lite
+        new Chart(document.getElementById('topicChartLite'), {
+            type: 'bar',
+            data: {
+                labels: topicDataLite.labels,
+                datasets: [{
+                    data: topicDataLite.values,
+                    backgroundColor: '#7C3AED',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { size: 11 } }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: { font: { size: 11 } }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
