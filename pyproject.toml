@@ -68,6 +68,9 @@ all = [
     "vllm",
 ]
 
+[project.scripts]
+dr-cdpo = "dr_agent.cdpo.cli:app"
+
 [tool.setuptools.packages.find]
 include = ["dr_agent*"]
 exclude = ["tests*", "docs*"]
