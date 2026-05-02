@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PubMed vs Google Search Output Comparison</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --card: #182341;
+      --text: #e7ecff;
+      --muted: #9aa7d6;
+      --line: rgba(255,255,255,.08);
+      --pubmed: #58a6ff;
+      --google: #8bdb81;
+      --accent: #f0b35a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #172044 0, var(--bg) 42%);
+      color: var(--text);
+    }
+    .wrap { max-width: 1400px; margin: 0 auto; padding: 32px 20px 48px; }
+    .hero {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(18, 25, 51, .85);
+      backdrop-filter: blur(8px);
+      margin-bottom: 24px;
+    }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    .sub { color: var(--muted); line-height: 1.5; }
+    .query-block {
+      margin: 18px 0 26px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(18, 25, 51, .72);
+      overflow: hidden;
+    }
+    .query-head {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+    .query-label {
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .query-text { font-size: 18px; font-weight: 650; line-height: 1.35; }
+    .summary { margin-top: 8px; color: var(--muted); font-size: 13px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .panel { padding: 16px; border-right: 1px solid var(--line); }
+    .panel:last-child { border-right: 0; }
+    .panel-head {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .panel-head.pubmed { background: rgba(88, 166, 255, .14); color: var(--pubmed); }
+    .panel-head.google { background: rgba(139, 219, 129, .14); color: var(--google); }
+    .card {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(24, 35, 65, .94);
+      border: 1px solid var(--line);
+      margin-bottom: 12px;
+    }
+    .card-title { font-weight: 700; line-height: 1.35; margin-bottom: 6px; }
+    .meta, .url {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 6px;
+      word-break: break-word;
+    }
+    .snippet {
+      color: #dce5ff;
+      font-size: 13px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+    }
+    .empty-state {
+      padding: 18px;
+      color: var(--muted);
+      border: 1px dashed var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.02);
+    }
+    .empty { color: var(--muted); font-size: 13px; }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .panel { border-right: 0; border-bottom: 1px solid var(--line); }
+      .panel:last-child { border-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>PubMed vs Google Search Output Comparison</h1>
+      <div class="sub">Left: `pubmed_search` output. Right: `google_search` output via Serper. The same 5 queries are shown side by side.</div>
+    </div>
+    
+            <section class="query-block">
+              <div class="query-head">
+                <div class="query-label">Query</div>
+                <div class="query-text">ALS cognitive impairment prognosis survival frontotemporal lobe</div>
+                <div class="summary">PubMed: 0 total, 0 shown · Google: 5 shown</div>
+              </div>
+              <div class="grid">
+                <div class="panel">
+                  <div class="panel-head pubmed">PubMed</div>
+                  <div class="empty-state">Found 0 results</div>
+                </div>
+                <div class="panel">
+                  <div class="panel-head google">Google / Serper</div>
+                  
+    <div class="card">
+      <div class="card-title">Prognosis of amyotrophic lateral sclerosis with cognitive and ... - PMC</div>
+      
+      <div class="url">https://pmc.ncbi.nlm.nih.gov/articles/PMC8357115/</div>
+      <div class="snippet">The frontotemporal syndrome of ALS is associated with poor survival. J ... survival could be related to other clinical features, more than cognitive impairment ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">The frontotemporal syndrome of ALS is associated with poor survival</div>
+      <div class="meta">Sep 26, 2016</div>
+      <div class="url">https://pmc.ncbi.nlm.nih.gov/articles/PMC5110703/</div>
+      <div class="snippet">ALS patients with both behavioral changes and cognitive impairment had a median survival time of 3.4 years (n = 13; 95 % CI 2.14–4.69, p = 0.01; ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Dementia Affects Prognosis of ALS Patients, New Study Suggests</div>
+      <div class="meta">Oct 3, 2017</div>
+      <div class="url">https://alsnewstoday.com/news/dementia-affects-prognosis-als-amyotrophic-lateral-sclerosis-patients-study/</div>
+      <div class="snippet">ALS patients with dementia had a 13-month reduction in median survival rate compared to non-demented ALS patients (29 months vs. 42 months), ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Survival Profiles of Patients With Frontotemporal Dementia and ...</div>
+      
+      <div class="url">https://jamanetwork.com/journals/jamaneurology/fullarticle/798392</div>
+      <div class="snippet">... cognitive symptoms in ALS is significantly associated with poor prognosis. Patients diagnosed with FTD-MND have significantly shorter survival than patients ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Prognosis of amyotrophic lateral sclerosis with cognitive and ...</div>
+      
+      <div class="url">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0253279</div>
+      <div class="snippet">Govaarts et al. also found that the survival time of patients with frontotemporal lobe symptoms was significantly shortened [18]. Bersano&#x27;s study even showed ...</div>
+    </div>
+    
+                </div>
+              </div>
+            </section>
+            
+            <section class="query-block">
+              <div class="query-head">
+                <div class="query-label">Query</div>
+                <div class="query-text">HBeAg positive chronic hepatitis B entecavir tenofovir phase III viral suppression renal bone adverse events</div>
+                <div class="summary">PubMed: 0 total, 0 shown · Google: 5 shown</div>
+              </div>
+              <div class="grid">
+                <div class="panel">
+                  <div class="panel-head pubmed">PubMed</div>
+                  <div class="empty-state">Found 0 results</div>
+                </div>
+                <div class="panel">
+                  <div class="panel-head google">Google / Serper</div>
+                  
+    <div class="card">
+      <div class="card-title">Renal and bone side effects of long-term use of entecavir, tenofovir ...</div>
+      
+      <div class="url">https://pmc.ncbi.nlm.nih.gov/articles/PMC10638829/</div>
+      <div class="snippet">Long-term administration of TDF has resulted in stronger adverse effects than TAF and ETV in regard to both renal function and bone tissue in CHB patients.</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Improved bone and renal safety in younger tenofovir disoproxil ...</div>
+      
+      <div class="url">https://www.sciencedirect.com/science/article/pii/S1665268123002235</div>
+      <div class="snippet">Renal and bone impairment has been reported in chronic hepatitis B (CHB) patients receiving long-term tenofovir disoproxil fumarate (TDF) therapy.</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Effects of tenofovir amibufenamide and entecavir on estimated ...</div>
+      
+      <div class="url">https://www.wjgnet.com/1948-5182/full/v18/i2/114346.htm</div>
+      <div class="snippet">Core Tip: This study provides the comparison of renal safety between tenofovir amibufenamide (TMF) and entecavir (ETV) in treatment-naive chronic hepatitis B ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Treatment of chronic hepatitis B in clinical practice with entecavir or ...</div>
+      
+      <div class="url">https://pmc.ncbi.nlm.nih.gov/articles/PMC4064062/</div>
+      <div class="snippet">In HBeAg positive patients, HBeAg seroconversion occurred in 31 patients (cumulative rate of 55%) and HBsAg loss in 15 patients (cumulative rate of 34%). One ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">96-Week Treatment of Tenofovir Amibufenamide and Tenofovir ...</div>
+      <div class="meta">Nov 1, 2022</div>
+      <div class="url">https://www.xiahepublishing.com/m/2310-8819/JCTH-2022-00058</div>
+      <div class="snippet">Virological suppression rates at week 96 were similar between TMF and TDF group in both HBeAg-positive and HBeAg-negative populations.</div>
+    </div>
+    
+                </div>
+              </div>
+            </section>
+            
+            <section class="query-block">
+              <div class="query-head">
+                <div class="query-label">Query</div>
+                <div class="query-text">nucleoside analog chronic hepatitis B phase III renal adverse events bone mineral density</div>
+                <div class="summary">PubMed: 0 total, 0 shown · Google: 5 shown</div>
+              </div>
+              <div class="grid">
+                <div class="panel">
+                  <div class="panel-head pubmed">PubMed</div>
+                  <div class="empty-state">Found 0 results</div>
+                </div>
+                <div class="panel">
+                  <div class="panel-head google">Google / Serper</div>
+                  
+    <div class="card">
+      <div class="card-title">Bone Mineral Density and Renal Function in Chronic Hepatitis B ...</div>
+      
+      <div class="url">https://pubmed.ncbi.nlm.nih.gov/27266210/</div>
+      <div class="snippet">Background: The use of nucleotide analogs (NTAs) can be associated with negative effects on renal function and bone mineral density (BMD) due to proximal ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Renal and bone side effects of long-term use of entecavir, tenofovir ...</div>
+      
+      <div class="url">https://pmc.ncbi.nlm.nih.gov/articles/PMC10638829/</div>
+      <div class="snippet">Long-term administration of TDF has resulted in stronger adverse effects than TAF and ETV in regard to both renal function and bone tissue in CHB patients.</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Effect of Long-Term Use of Tenofovir (TDF) on Bone Density in ...</div>
+      
+      <div class="url">https://clinicaltrials.gov/study/NCT06990438</div>
+      <div class="snippet">This study aims to evaluate the effect of long-term use of Tenofovir Disoproxil Fumarate (TDF) on bone density in patients with chronic hepatitis B virus ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Comparison of renal safety and bone mineral density of tenofovir ...</div>
+      
+      <div class="url">https://www.sciencedirect.com/science/article/pii/S1201971222005197</div>
+      <div class="snippet">Bone mineral density and renal function in chronic hepatitis B patients receiving nucleotide versus nucleoside analogs: a pilot prospective study. J Med ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Renal &amp; Bone Risk Factors for Chronic HBV | HCP Site</div>
+      
+      <div class="url">https://www.vemlidyhcp.com/treatment-renal-bone-risk-factors/bone</div>
+      <div class="snippet">Bone density may decline over time due to various factors. In addition, patients with chronic hepatitis B have a higher prevalence of osteoporosis and/or bone ...</div>
+    </div>
+    
+                </div>
+              </div>
+            </section>
+            
+            <section class="query-block">
+              <div class="query-head">
+                <div class="query-label">Query</div>
+                <div class="query-text">baricitinib tocilizumab time to recovery COVID-19 hospitalized corticosteroids randomized</div>
+                <div class="summary">PubMed: 0 total, 0 shown · Google: 5 shown</div>
+              </div>
+              <div class="grid">
+                <div class="panel">
+                  <div class="panel-head pubmed">PubMed</div>
+                  <div class="empty-state">Found 0 results</div>
+                </div>
+                <div class="panel">
+                  <div class="panel-head google">Google / Serper</div>
+                  
+    <div class="card">
+      <div class="card-title">Effect of tocilizumab, sarilumab, and baricitinib on mortality among ...</div>
+      
+      <div class="url">https://www.sciencedirect.com/science/article/pii/S1198743X2200372X</div>
+      <div class="snippet">Randomized controlled trials (RCT) established the mortality reduction by tocilizumab (Actemra), baricitinib (Olumiant), and sarilumab (Kevzara) in hospitalized ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">baricitinib reduces deaths in patients hospitalised with COVID-19</div>
+      <div class="meta">Mar 3, 2022</div>
+      <div class="url">https://www.recoverytrial.net/news/baricitinib</div>
+      <div class="snippet">At randomisation, 95% of patients were receiving a corticosteroid such as dexamethasone, 23% were receiving tocilizumab, and 20% were receiving ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Tocilizumab in patients admitted to hospital with COVID-19 ...</div>
+      
+      <div class="url">https://www.thelancet.com/article/S0140-6736(21)00676-0/fulltext</div>
+      <div class="snippet">In this study, we aimed to evaluate the effects of tocilizumab in adult patients admitted to hospital with COVID-19 with both hypoxia and systemic inflammation.</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Tocilizumab in Hospitalized Patients with Severe Covid-19 Pneumonia</div>
+      <div class="meta">Feb 25, 2021</div>
+      <div class="url">https://www.nejm.org/doi/full/10.1056/NEJMoa2028700</div>
+      <div class="snippet">The use of tocilizumab, a monoclonal antibody against the interleukin-6 receptor, has resulted in better outcomes in patients with severe Covid-19 pneumonia.</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Tocilizumab Versus Baricitinib in Patients Hospitalized With COVID ...</div>
+      
+      <div class="url">https://journals.lww.com/ccejournal/fulltext/2022/05000/tocilizumab_versus_baricitinib_in_patients.10.aspx</div>
+      <div class="snippet">This study aims to evaluate the effectiveness of tocilizumab versus baricitinib in patients hospitalized with COVID-19 pneumonia and hypoxemia.</div>
+    </div>
+    
+                </div>
+              </div>
+            </section>
+            
+            <section class="query-block">
+              <div class="query-head">
+                <div class="query-label">Query</div>
+                <div class="query-text">ALS frontotemporal spectrum disorder prevalence review guideline consensus</div>
+                <div class="summary">PubMed: 0 total, 0 shown · Google: 5 shown</div>
+              </div>
+              <div class="grid">
+                <div class="panel">
+                  <div class="panel-head pubmed">PubMed</div>
+                  <div class="empty-state">Found 0 results</div>
+                </div>
+                <div class="panel">
+                  <div class="panel-head google">Google / Serper</div>
+                  
+    <div class="card">
+      <div class="card-title">Amyotrophic lateral sclerosis - frontotemporal spectrum disorder ...</div>
+      
+      <div class="url">https://pmc.ncbi.nlm.nih.gov/articles/PMC7409990/</div>
+      <div class="snippet">This article presents the revised consensus criteria for the diagnosis of frontotemporal dysfunction in amyotrophic lateral sclerosis (ALS)</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">[PDF] frontotemporal spectrum disorder (ALS-FTSD): Revised diagnostic ...</div>
+      
+      <div class="url">https://www.med.upenn.edu/digitalneuropathologylab/assets/user-content/documents/educational-resources/amyotrophic-lateral-sclerosis-frontotemporal-spectrum-disorder-(als-ftsd)-revised-diagnostic-criteria.pdf</div>
+      <div class="snippet">Abstract. This article presents the revised consensus criteria for the diagnosis of frontotemporal dysfunction in amyotrophic lateral sclerosis (ALS) based ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">[PDF] Frontotemporal syndromes in the motor neuron diseases</div>
+      
+      <div class="url">https://ftdboston.org/wp-content/uploads/2020/08/ftdals_consensus_2007.pdf</div>
+      <div class="snippet">A workshop on FTD in ALS was convened in June 2007 focused on defining consensus criteria for diagnosis of a frontotemporal syndrome in ALS. The following ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Incidence and Prevalence of Frontotemporal Dementia</div>
+      <div class="meta">Sep 8, 2025</div>
+      <div class="url">https://jamanetwork.com/journals/jamaneurology/fullarticle/2838666</div>
+      <div class="snippet">FTD-ALS showed 0.14 cases per 100 000 person-years (95% CI, 0.09-0.22). The pooled prevalence rate of bvFTD was 9.74 cases per 100 000 ...</div>
+    </div>
+    
+    <div class="card">
+      <div class="card-title">Consensus Guideline to Help Distinguish Behavioral-Variant ...</div>
+      
+      <div class="url">https://neurologytoday.aan.com/doi/10.1097/01.NT.0000668932.25080.b6</div>
+      <div class="snippet">Consensus Guideline to Help Distinguish Behavioral-Variant Frontotemporal Dementia from Psychiatric Disorders. By Jamie Talan. Behavioral Neurology/Dementia.</div>
+    </div>
+    
+                </div>
+              </div>
+            </section>
+            
+  </div>
+</body>
+</html>
